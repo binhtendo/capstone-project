@@ -2,12 +2,10 @@ import GlobalStyle from "@/styles";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import Image from "next/image";
-import PlacesToVisitOverview from "@/components/placesToVisitOverview/placesToVisitOverview";
+import PlacesToVisitOverview from "@/components/placesToVisitOverview";
 
-export default function App() {
-  return (
-    <div>
-      <PlacesToVisitOverview />
-    </div>
-  );
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
 }
+
+export default MyApp;

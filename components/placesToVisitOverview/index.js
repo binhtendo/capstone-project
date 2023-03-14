@@ -2,15 +2,16 @@ import useSWR from "swr";
 import styled from "styled-components";
 import { useEffect, useState } from "react";
 
-const apiKey = "5ae2e3f221c38a28845f05b6cb7a6da1b4898cff0f86c1f60c68602a";
+const apiKey = process.env.NEXT_PUBLIC_apiKey;
 
-function apiGet(method, query) {
+export function apiGet(method, query) {
   return new Promise(function (resolve, reject) {
     var otmAPI =
       "https://api.opentripmap.com/0.1/en/places/" +
       method +
       "?apikey=" +
       apiKey;
+
     if (query !== undefined) {
       otmAPI += "&" + query;
     }
@@ -32,39 +33,38 @@ export default function PlacesToVisitOverview() {
         const sortedData = data.features
           .filter((place) => place.properties.rate >= 4)
           .sort((a, b) => b.properties.rate - a.properties.rate);
-
-        const placesWithFavorite = sortedData.map((place) => ({
-          ...place,
-          isFavorite: false,
-        }));
+        const uniqueData = new Set(
+          sortedData.map((place) => place.properties.name)
+        );
+        const placesWithFavorite = [...uniqueData].map((name) => {
+          const place = sortedData.find(
+            (place) => place.properties.name === name
+          );
+          return {
+            ...place,
+            isFavorite: false,
+          };
+        });
         setPlaces(placesWithFavorite);
+        console.log(placesWithFavorite);
       })
       .catch((err) => console.log("Fetch Error :-S", err));
   }, []);
-
-  const toggleFavorite = (index) => {
-    const newPlaces = [...places];
-
-    newPlaces[index].isFavorite = !newPlaces[index].isFavorite;
-
-    setPlaces(newPlaces);
-  };
 
   return (
     <div>
       <h1>Places to Visit</h1>
       <ul>
         {places.map((place, index) => (
-          <li
-            key={place.properties.xid}
-            style={{
-              display: "flex",
-              justifyContent: "space-between",
-              alignItems: "center",
-            }}
-          >
+          <li key={place.properties.xid}>
             <span>{place.properties.name}</span>
-            <button onClick={() => toggleFavorite(index)}>
+            <button
+              onClick={() => {
+                const newPlaces = [...places];
+                newPlaces[index].isFavorite = !newPlaces[index].isFavorite;
+                setPlaces(newPlaces);
+              }}
+            >
               {place.isFavorite ? "★" : "☆"}
             </button>
           </li>

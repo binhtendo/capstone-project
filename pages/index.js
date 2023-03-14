@@ -1,15 +1,18 @@
 import styled from "styled-components";
-import PlacesToVisitOverview from "@/components/placesToVisitOverview/placesToVisitOverview";
+import Link from "next/link";
+import Image from "next/image";
+import PlacesToVisitOverview from "@/components/placesToVisitOverview";
 
 export default function Home() {
   return (
     <main>
-      <Heading>🐋Capstone Whales Template🐋</Heading>;
+      <Heading>app-name</Heading>
       <PlacesToVisitOverview />
     </main>
   );
 }
 
 const Heading = styled.h1`
+  text-align: center;
   text-align: center;
 `;
