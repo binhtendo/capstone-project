@@ -16,7 +16,7 @@ export function apiGet(method, query) {
       .then((response) => response.json())
       .then((data) => resolve(data))
       .catch(function (err) {
-        reject(err);
+        reject(new Error("Failed to fetch data from API: " + err.message));
       });
   });
 }
