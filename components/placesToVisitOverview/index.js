@@ -32,7 +32,7 @@ export default function PlacesToVisitOverview() {
   const toggleFavorite = (xid) => {
     setPlaces(
       places.map((place) => {
-        if (place.properties.xid === xid.properties.xid) {
+        if (place.properties.xid === xid) {
           return {
             ...place,
             isFavorite: !place.isFavorite,
@@ -52,7 +52,7 @@ export default function PlacesToVisitOverview() {
             key={place.properties.xid}
             name={place.properties.name}
             onFavorite={toggleFavorite}
-            xid={place} // hier sollte xid={place.properties.xid} sein
+            xid={place.properties.xid}
           />
         ))}
       </ul>
