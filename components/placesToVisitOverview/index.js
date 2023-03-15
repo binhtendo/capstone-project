@@ -1,28 +1,6 @@
-import useSWR from "swr";
-import styled from "styled-components";
 import { useEffect, useState } from "react";
-
-const apiKey = process.env.NEXT_PUBLIC_apiKey;
-
-export function apiGet(method, query) {
-  return new Promise(function (resolve, reject) {
-    var otmAPI =
-      "https://api.opentripmap.com/0.1/en/places/" +
-      method +
-      "?apikey=" +
-      apiKey;
-
-    if (query !== undefined) {
-      otmAPI += "&" + query;
-    }
-    fetch(otmAPI)
-      .then((response) => response.json())
-      .then((data) => resolve(data))
-      .catch(function (err) {
-        console.log("Fetch Error :-S", err);
-      });
-  });
-}
+import Place from "../Place";
+import { apiGet } from "../../utils/api";
 
 export default function PlacesToVisitOverview() {
   const [places, setPlaces] = useState([]);
@@ -51,23 +29,31 @@ export default function PlacesToVisitOverview() {
       .catch((err) => console.log("Fetch Error :-S", err));
   }, []);
 
+  const toggleFavorite = (xid) => {
+    setPlaces(
+      places.map((place) => {
+        if (place.properties.xid === xid.properties.xid) {
+          return {
+            ...place,
+            isFavorite: !place.isFavorite,
+          };
+        }
+        return place;
+      })
+    );
+  };
+
   return (
     <div>
-      <h1>Places to Visit</h1>
+      <h1>Results:</h1>
       <ul>
         {places.map((place, index) => (
-          <li key={place.properties.xid}>
-            <span>{place.properties.name}</span>
-            <button
-              onClick={() => {
-                const newPlaces = [...places];
-                newPlaces[index].isFavorite = !newPlaces[index].isFavorite;
-                setPlaces(newPlaces);
-              }}
-            >
-              {place.isFavorite ? "★" : "☆"}
-            </button>
-          </li>
+          <Place
+            key={place.properties.xid}
+            name={place.properties.name}
+            onFavorite={toggleFavorite}
+            xid={place} // hier sollte xid={place.properties.xid} sein
+          />
         ))}
       </ul>
     </div>
