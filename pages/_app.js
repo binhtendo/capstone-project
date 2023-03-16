@@ -1,14 +1,10 @@
 import GlobalStyle from "@/styles";
 import Head from "next/head";
+import { useEffect, useState } from "react";
+import Image from "next/image";
 
-export default function App({ Component, pageProps }) {
-  return (
-    <>
-      <GlobalStyle />
-      <Head>
-        <title>Capstone Project</title>
-      </Head>
-      <Component {...pageProps} />
-    </>
-  );
+function MyApp({ Component, pageProps }) {
+  return <Component {...pageProps} />;
 }
+
+export default MyApp;
