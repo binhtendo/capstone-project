@@ -29,31 +29,12 @@ export default function PlacesToVisitOverview() {
       .catch((err) => console.log("Fetch Error :-S", err));
   }, []);
 
-  const toggleFavorite = (xid) => {
-    setPlaces(
-      places.map((place) => {
-        if (place.properties.xid === xid) {
-          return {
-            ...place,
-            isFavorite: !place.isFavorite,
-          };
-        }
-        return place;
-      })
-    );
-  };
-
   return (
     <div>
       <h1>Results:</h1>
       <ul>
         {places.map((place, index) => (
-          <Place
-            key={place.properties.xid}
-            name={place.properties.name}
-            onFavorite={toggleFavorite}
-            xid={place.properties.xid}
-          />
+          <Place key={place.properties.xid} name={place.properties.name} />
         ))}
       </ul>
     </div>
