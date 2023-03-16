@@ -28,4 +28,6 @@ export const NavbarContainer = styled.nav`
   font-size: 20px;
   z-index: 1;
   border-top: 1px solid #354f52;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 `;

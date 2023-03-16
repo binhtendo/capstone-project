@@ -21,8 +21,7 @@ const BgImage = styled(Image)`
 `;
 
 const MainContainer = styled.main`
-  /* padding-top: 80px; Die Höhe der Navbar */
-  padding-bottom: 80px; /* Die Höhe der Navbar */
+  padding-bottom: 80px;
 `;
 
 const Layout = ({ children }) => {
