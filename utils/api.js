@@ -1,4 +1,4 @@
-const apiKey = process.env.NEXT_PUBLIC_apiKey;
+const apiKey = process.env.NEXT_PUBLIC_API_KEY;
 
 export function apiGet(method, query) {
   return new Promise(function (resolve, reject) {
