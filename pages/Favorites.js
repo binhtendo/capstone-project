@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Navbar from "@/components/Navbar";
 
 export default function Favorites() {
   return (
@@ -11,7 +10,6 @@ export default function Favorites() {
         <li>test</li>
         <li>test</li>
       </ul>
-      <Navbar />
     </>
   );
 }
