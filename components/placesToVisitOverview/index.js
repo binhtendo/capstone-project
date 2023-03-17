@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import Place from "../Place";
 import { apiGet } from "../../utils/api";
+import { cardStyles } from "@/styles";
 
 export default function PlacesToVisitOverview() {
   const [places, setPlaces] = useState([]);
-
   useEffect(() => {
     apiGet("radius", "radius=10000&lon=9.99302&lat=53.55073&type=sightseeing")
       .then((data) => {
@@ -30,8 +30,8 @@ export default function PlacesToVisitOverview() {
   }, []);
 
   return (
-    <div>
-      <h1>Results:</h1>
+    <div style={cardStyles}>
+      <h2>Results:</h2>
       <ul>
         {places.map((place, index) => (
           <Place key={place.properties.xid} name={place.properties.name} />
