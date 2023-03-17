@@ -11,9 +11,8 @@ export default createGlobalStyle`
     margin: 0;
     font-family: system-ui;
   }
-
-
 `;
+
 export const NavbarContainer = styled.nav`
   display: flex;
   position: fixed;
@@ -28,6 +27,48 @@ export const NavbarContainer = styled.nav`
   font-size: 20px;
   z-index: 1;
   border-top: 1px solid #354f52;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 `;
+
+export const listItemStyles = {
+  textAlign: "left",
+  marginBottom: "1px",
+  display: "flex",
+  alignItems: "center",
+  borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+  justifyContent: "space-between",
+};
+
+export const checkboxStyles = {
+  float: "right",
+  margin: "4px 10px 0 0",
+};
+
+export const textStyles = (isChecked, textLength) => ({
+  textDecoration: isChecked ? "line-through" : "none",
+  whiteSpace: "normal",
+  wordBreak: "break-all",
+  fontSize: textLength > 20 ? "3vw" : "4vw",
+});
+
+export const cardStyles = {
+  border: "1px solid rgba(0, 0, 0, 0.1)",
+  borderRadius: "4px",
+  padding: "16px",
+  boxShadow: "0 2px 4px rgba(0, 0, 0, 0.8)",
+  background: "rgba(255, 255, 255, 0.7)",
+  maxWidth: "85%",
+  margin: "0 auto",
+};
+
+export const buttonStyles = {
+  backgroundColor: "transparent",
+  border: "none",
+  outline: "none",
+  cursor: "pointer",
+  fontSize: "1.2rem",
+  color: "#000",
+  padding: "200",
+  alignSelf: "flex-end",
+};

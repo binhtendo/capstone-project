@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Place({ name }) {
   return (
     <div>
-      <h2>{name}</h2>
+      <p>{name}</p>
     </div>
   );
 }
