@@ -16,8 +16,11 @@ export default function Form({ onAddTodo }) {
         name="todo"
         type="text"
         placeholder="Element hinzufügen"
+        required
       />
-      <button>➕</button>
+      <button type="submit" required>
+        ➕
+      </button>
     </form>
   );
 }
