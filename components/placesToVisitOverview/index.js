@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Place from "../Place";
 import { apiGet } from "../../utils/api";
 import Searchbox from "../Searchbox";
+import { cardStyles } from "@/styles";
 
 export default function PlacesToVisitOverview() {
   const [places, setPlaces] = useState([]);
@@ -26,6 +27,7 @@ export default function PlacesToVisitOverview() {
           };
         });
         setPlaces(placesWithFavorite);
+        console.log("Places:", placesWithFavorite);
       })
       .catch((err) => console.log("Fetch Error :-S", err));
   }, []);
@@ -56,16 +58,18 @@ export default function PlacesToVisitOverview() {
     <div>
       <h2>Results:</h2>
       <Searchbox value={searchTerm} onChange={handleSearch} />
-      <ul>
-        {filteredPlaces.map((place, index) => (
-          <Place
-            key={place.properties.xid}
-            name={place.properties.name}
-            onFavorite={toggleFavorite}
-            xid={place.properties.xid}
-          />
-        ))}
-      </ul>
+      <div style={cardStyles}>
+        <ul>
+          {filteredPlaces.map((place, index) => (
+            <Place
+              key={place.properties.xid}
+              name={place.properties.name}
+              onFavorite={toggleFavorite}
+              xid={place.properties.xid}
+            />
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }
