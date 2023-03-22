@@ -1,6 +1,6 @@
 import Layout from "@/components/Layout";
-import PlacesToVisitOverview from "@/components/placesToVisitOverview";
 import styled from "styled-components";
+import PlacesToVisitOverview from "@/components/PlacesToVisitOverview";
 
 export default function Home() {
   return (
