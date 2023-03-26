@@ -1,10 +1,16 @@
-import GlobalStyle from "@/styles";
-import Head from "next/head";
-import { useEffect, useState } from "react";
-import Image from "next/image";
+import useLocalStorageState from "use-local-storage-state";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />;
+  const [favorites, setFavorites] = useLocalStorageState("favorites", {
+    defaultValue: [],
+  });
+  return (
+    <Component
+      {...pageProps}
+      favorites={favorites}
+      setFavorites={setFavorites}
+    />
+  );
 }
 
 export default MyApp;

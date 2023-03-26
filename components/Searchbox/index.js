@@ -1,23 +1,19 @@
-import { togglePlaceStyles } from "@/styles";
 import useLocalStorageState from "use-local-storage-state";
 import React, { useState } from "react";
 import { cardStyles } from "@/styles";
 import { fetchCityCoordinates, fetchPlaces } from "@/pages/api/fetch";
 import Place from "../TogglePlace";
 
-const SearchBox = () => {
+const SearchBox = ({ favorites, setFavorites }) => {
   const [query, setQuery] = useLocalStorageState("query", {
     defaultValue: "",
   });
   const [results, setResults] = useLocalStorageState("results", {
     defaultValue: [],
   });
-  const [favorites, setFavorites] = useLocalStorageState("favorites", {});
-
   const handleChange = (e) => {
     setQuery(e.target.value);
   };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     const coordinates = await fetchCityCoordinates(query);
@@ -29,14 +25,7 @@ const SearchBox = () => {
       window.alert(errorMessage);
     }
   };
-
-  const toggleFavorite = (xid) => {
-    setFavorites((prevFavorites) => {
-      const isFavorite = prevFavorites[xid];
-      return { ...prevFavorites, [xid]: !isFavorite };
-    });
-  };
-
+  console.log(favorites);
   return (
     <div>
       <form onSubmit={handleSubmit}>
@@ -60,7 +49,15 @@ const SearchBox = () => {
                 name={result.name}
                 xid={result.xid}
                 isFavorite={favorites[result.xid]}
-                onToggleFavorite={toggleFavorite}
+                onToggleFavorite={(name, xid) => {
+                  const newFavorites = { ...favorites };
+                  if (newFavorites[xid]) {
+                    delete newFavorites[xid];
+                  } else {
+                    newFavorites[xid] = { name };
+                  }
+                  setFavorites(newFavorites);
+                }}
               />
             </li>
           ))}
@@ -69,4 +66,5 @@ const SearchBox = () => {
     </div>
   );
 };
+
 export default SearchBox;
