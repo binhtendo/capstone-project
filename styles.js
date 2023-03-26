@@ -72,3 +72,10 @@ export const buttonStyles = {
   padding: "200",
   alignSelf: "flex-end",
 };
+
+export const togglePlaceStyles = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+};
