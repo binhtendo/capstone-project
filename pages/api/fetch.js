@@ -23,7 +23,6 @@ const fetchPlaces = async (lat, lon) => {
       return data;
     }
   }
-  return [];
 };
 
 export { fetchCityCoordinates, fetchPlaces };

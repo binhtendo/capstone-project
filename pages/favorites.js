@@ -16,7 +16,7 @@ export default function Favorites() {
   return (
     <Layout>
       <main>
-        <h2>Favorites:</h2>
+        <h2>Hier muss ich hin:</h2>
         <div style={cardStyles}>
           <ul>
             {favoritePlaces.map((xid) => (
