@@ -38,7 +38,7 @@ const SearchBox = ({ favorites, setFavorites }) => {
         <label htmlFor="searchbox"></label>
         <input
           type="text"
-          value={query}
+          value={query || ""}
           onChange={handleChange}
           placeholder="Wo geht's hin?"
           required
