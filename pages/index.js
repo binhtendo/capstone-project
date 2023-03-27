@@ -2,11 +2,11 @@ import Layout from "@/components/Layout";
 import styled from "styled-components";
 import SearchBox from "@/components/Searchbox";
 
-export default function Home() {
+export default function Home({ favorites, setFavorites }) {
   return (
     <Layout>
       <Heading>Trip-Mappa</Heading>
-      <SearchBox />
+      <SearchBox favorites={favorites} setFavorites={setFavorites} />
     </Layout>
   );
 }
