@@ -32,15 +32,24 @@ export default function Todo() {
     setTodos(todos.filter((todo) => todo.id !== idToDelete));
   }
 
+  function handleEditTodo(idToEdit, newTitle) {
+    setTodos(
+      todos.map((todo) =>
+        todo.id === idToEdit ? { ...todo, title: newTitle } : todo
+      )
+    );
+  }
+
   return (
     <Layout>
       <main>
-        <h2>Packliste</h2>
+        <h2>Ich packe meinen Koffer...</h2>
         <Form onAddTodo={handleAddTodo} />
         <List
           todos={todos}
           onToggleCheckTodo={handleToggleCheckTodo}
           onDeleteTodo={handleDeleteTodo}
+          onEditTodo={handleEditTodo}
         />
       </main>
     </Layout>

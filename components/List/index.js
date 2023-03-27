@@ -6,7 +6,12 @@ import {
   buttonStyles,
 } from "@/styles";
 
-export default function List({ todos, onToggleCheckTodo, onDeleteTodo }) {
+export default function List({
+  todos,
+  onToggleCheckTodo,
+  onDeleteTodo,
+  onEditTodo,
+}) {
   return (
     <>
       {todos.length > 0 && (
@@ -28,6 +33,25 @@ export default function List({ todos, onToggleCheckTodo, onDeleteTodo }) {
                     />
                     <span style={textStyles(todo.isChecked)}>{todo.title}</span>
                     <div>
+                      <button
+                        onClick={() => {
+                          const newTitleValue = prompt(
+                            "Neuer Titel",
+                            todo.title
+                          );
+                          if (
+                            newTitleValue !== null &&
+                            newTitleValue !== todo.title
+                          ) {
+                            onEditTodo(todo.id, newTitleValue);
+                          }
+                        }}
+                        style={buttonStyles}
+                      >
+                        <span role="img" aria-label="edit">
+                          ✏️
+                        </span>
+                      </button>
                       <button
                         onClick={() => onDeleteTodo(todo.id)}
                         style={buttonStyles}
