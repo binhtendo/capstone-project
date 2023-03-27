@@ -50,24 +50,25 @@ const SearchBox = ({ favorites, setFavorites }) => {
       <Filter results={results} setFilteredResults={setFilteredResults} />
       <div style={cardStyles}>
         <ul>
-          {filteredResults.map((result, index) => (
-            <li key={index}>
-              <Place
-                name={result.name}
-                xid={result.xid}
-                isFavorite={favorites[result.xid]}
-                onToggleFavorite={(name, xid) => {
-                  const newFavorites = { ...favorites };
-                  if (newFavorites[xid]) {
-                    delete newFavorites[xid];
-                  } else {
-                    newFavorites[xid] = { name };
-                  }
-                  setFavorites(newFavorites);
-                }}
-              />
-            </li>
-          ))}
+          {filteredResults &&
+            filteredResults.map((result, index) => (
+              <li key={index}>
+                <Place
+                  name={result.name}
+                  xid={result.xid}
+                  isFavorite={favorites[result.xid]}
+                  onToggleFavorite={(name, xid) => {
+                    const newFavorites = { ...favorites };
+                    if (newFavorites[xid]) {
+                      delete newFavorites[xid];
+                    } else {
+                      newFavorites[xid] = { name };
+                    }
+                    setFavorites(newFavorites);
+                  }}
+                />
+              </li>
+            ))}
         </ul>
       </div>
     </div>
