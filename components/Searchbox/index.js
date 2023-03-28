@@ -6,7 +6,7 @@ import Place from "../TogglePlace";
 import Filter from "../Filter";
 
 const SearchBox = ({ favorites, setFavorites }) => {
-  const [query, setQuery] = useLocalStorageState("query", []);
+  const [query, setQuery] = useLocalStorageState("query", "");
   const [results, setResults] = useLocalStorageState("results", []);
   const [filteredResults, setFilteredResults] = useState([]);
 
@@ -23,8 +23,10 @@ const SearchBox = ({ favorites, setFavorites }) => {
     const coordinates = await fetchCityCoordinates(query);
     if (coordinates) {
       const places = await fetchPlaces(coordinates.lat, coordinates.lon);
-      setResults(places);
-      setFilteredResults(places);
+      const filteredPlaces = places.filter((place) => place.rate >= 5);
+      const sortedPlaces = filteredPlaces.sort((a, b) => b.rate - a.rate);
+      setResults(sortedPlaces);
+      setFilteredResults(sortedPlaces);
     } else {
       const errorMessage = "Eintrag konnte nicht gefunden werden.";
       window.alert(errorMessage);
@@ -37,7 +39,7 @@ const SearchBox = ({ favorites, setFavorites }) => {
         <label htmlFor="searchbox"></label>
         <input
           type="text"
-          value={query}
+          value={query || ""}
           onChange={handleChange}
           placeholder="Wo geht's hin?"
           required
