@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   listItemStyles,
   checkboxStyles,
@@ -49,7 +50,12 @@ export default function List({
                         style={buttonStyles}
                       >
                         <span role="img" aria-label="edit">
-                          ✏️
+                          <Image
+                            src="/pen.svg"
+                            alt="pen"
+                            width={17}
+                            height={17}
+                          />
                         </span>
                       </button>
                       <button
