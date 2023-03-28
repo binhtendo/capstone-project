@@ -6,7 +6,7 @@ import Place from "../TogglePlace";
 import Filter from "../Filter";
 
 const SearchBox = ({ favorites, setFavorites }) => {
-  const [query, setQuery] = useLocalStorageState("query", "");
+  const [query, setQuery] = useLocalStorageState("query", []);
   const [results, setResults] = useLocalStorageState("results", []);
   const [filteredResults, setFilteredResults] = useState([]);
 
