@@ -3,8 +3,8 @@ import React, { useState } from "react";
 const Filter = ({ results, setFilteredResults }) => {
   const [filterText, setFilterText] = useState("");
 
-  const handleFilterChange = (e) => {
-    const newFilterText = e.target.value;
+  const handleFilterChange = (event) => {
+    const newFilterText = event.target.value;
     setFilterText(newFilterText);
 
     const filteredResults = results.filter((result) =>
