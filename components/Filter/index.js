@@ -14,7 +14,7 @@ const Filter = ({ results, setFilteredResults }) => {
   };
 
   return (
-    <div>
+    <form>
       <label htmlFor="filter"></label>
       <input
         type="text"
@@ -23,7 +23,7 @@ const Filter = ({ results, setFilteredResults }) => {
         value={filterText}
         onChange={handleFilterChange}
       />
-    </div>
+    </form>
   );
 };
 

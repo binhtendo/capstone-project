@@ -14,12 +14,12 @@ const SearchBox = ({ favorites, setFavorites }) => {
     setFilteredResults(results);
   }, [results]);
 
-  const handleChange = (e) => {
-    setQuery(e.target.value);
+  const handleChange = (event) => {
+    setQuery(event.target.value);
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (event) => {
+    event.preventDefault();
     const coordinates = await fetchCityCoordinates(query);
     if (coordinates) {
       const places = await fetchPlaces(coordinates.lat, coordinates.lon);
@@ -31,14 +31,13 @@ const SearchBox = ({ favorites, setFavorites }) => {
     }
   };
 
-  console.log(favorites);
   return (
-    <div>
+    <>
       <form onSubmit={handleSubmit}>
         <label htmlFor="searchbox"></label>
         <input
           type="text"
-          value={query || ""}
+          value={query}
           onChange={handleChange}
           placeholder="Wo geht's hin?"
           required
@@ -71,7 +70,7 @@ const SearchBox = ({ favorites, setFavorites }) => {
             ))}
         </ul>
       </div>
-    </div>
+    </>
   );
 };
 
