@@ -27,8 +27,8 @@ export const NavbarContainer = styled.nav`
   font-size: 20px;
   z-index: 1;
   border-top: 1px solid #354f52;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 `;
 
 export const listItemStyles = {

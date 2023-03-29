@@ -1,3 +1,5 @@
+import Image from "next/image";
+
 export default function Form({ onAddTodo }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -13,7 +15,7 @@ export default function Form({ onAddTodo }) {
       <label htmlFor="todo"></label>
       <input id="todo" name="todo" type="text" placeholder="Add..." required />
       <button type="submit" required>
-        ➕
+        <Image src="/add.svg" alt="add" width={10} height={10} />
       </button>
     </form>
   );

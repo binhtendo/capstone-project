@@ -44,7 +44,7 @@ const SearchBox = ({ favorites, setFavorites }) => {
       setResults(sortedPlaces);
       setFilteredResults(sortedPlaces);
     } else {
-      const errorMessage = "Entry couldn't be found";
+      const errorMessage = "Entry Couldn't Be Found";
       window.alert(errorMessage);
     }
   };
