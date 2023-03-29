@@ -3,6 +3,7 @@ import { uid } from "uid";
 import List from "@/components/List";
 import Form from "@/components/Form";
 import Layout from "@/components/Layout";
+import styled from "styled-components";
 
 export default function Todo() {
   const [todos, setTodos] = useLocalStorageState("todos", {
@@ -43,7 +44,7 @@ export default function Todo() {
   return (
     <Layout>
       <main>
-        <h2>Ich packe meinen Koffer...</h2>
+        <Title>Packing List</Title>
         <Form onAddTodo={handleAddTodo} />
         <List
           todos={todos}
@@ -55,3 +56,12 @@ export default function Todo() {
     </Layout>
   );
 }
+
+const Title = styled.h2`
+  text-align: center;
+  position: relative;
+  font-size: 18px;
+  color: #2a9d8f;
+  text-shadow: 0.5px 0.5px 0.5px #264653;
+  padding: 10px 20px;
+`;
