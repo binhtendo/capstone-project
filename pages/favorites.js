@@ -2,6 +2,7 @@ import useLocalStorageState from "use-local-storage-state";
 import Layout from "@/components/Layout";
 import { cardStyles } from "@/styles";
 import Place from "@/components/TogglePlace";
+import styled from "styled-components";
 
 export default function Favorites() {
   const [favorites, setFavorites] = useLocalStorageState("favorites", {
@@ -16,7 +17,7 @@ export default function Favorites() {
   return (
     <Layout>
       <main>
-        <h2>Hier muss ich hin:</h2>
+        <Title>Here I must go</Title>
         <div style={cardStyles}>
           <ul>
             {favoritePlaces.map((xid) => (
@@ -39,3 +40,12 @@ export default function Favorites() {
     </Layout>
   );
 }
+
+const Title = styled.h2`
+  text-align: center;
+  position: relative;
+  font-size: 18px;
+  color: #2a9d8f;
+  text-shadow: 0.5px 0.5px 0.5px #264653;
+  padding: 10px 20px;
+`;

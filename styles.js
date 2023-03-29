@@ -19,7 +19,7 @@ export const NavbarContainer = styled.nav`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #cad2c5;
+  background-color: #f4a261;
   justify-content: space-around;
   align-items: center;
   padding: 0 20px;
@@ -60,6 +60,7 @@ export const cardStyles = {
   background: "rgba(255, 255, 255, 0.7)",
   maxWidth: "91%",
   margin: "0 auto",
+  position: "relative",
 };
 
 export const buttonStyles = {
@@ -78,4 +79,30 @@ export const togglePlaceStyles = {
   justifyContent: "space-between",
   alignItems: "center",
   borderBottom: "1px solid rgba(0, 0, 0, 0.1)",
+};
+
+export const previousButton = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  position: "fixed",
+  bottom: "70px",
+  left: "40%",
+  transform: "translateX(-50%)",
+  padding: "0 20px",
+  zIndex: "2",
+  backgroundColor: "#e76f51",
+};
+
+export const nextButton = {
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  position: "fixed",
+  bottom: "70px",
+  right: "40%",
+  transform: "translateX(50%)",
+  padding: "0 20px",
+  zIndex: "2",
+  backgroundColor: "#e76f51",
 };

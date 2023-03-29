@@ -11,13 +11,7 @@ export default function Form({ onAddTodo }) {
   return (
     <form onSubmit={handleSubmit}>
       <label htmlFor="todo"></label>
-      <input
-        id="todo"
-        name="todo"
-        type="text"
-        placeholder="Element hinzufügen"
-        required
-      />
+      <input id="todo" name="todo" type="text" placeholder="Add..." required />
       <button type="submit" required>
         ➕
       </button>
