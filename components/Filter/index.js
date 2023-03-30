@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Image from "next/image";
 
 const Filter = ({ results, setFilteredResults }) => {
   const [filterText, setFilterText] = useState("");
