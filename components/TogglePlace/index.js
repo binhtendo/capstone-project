@@ -3,7 +3,6 @@ import Image from "next/image";
 
 export default function Place({ name, xid, isFavorite, onToggleFavorite }) {
   const handleClick = () => {
-    console.log("handleClick", xid);
     onToggleFavorite(name, xid);
   };
   return (
