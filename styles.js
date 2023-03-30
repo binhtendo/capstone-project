@@ -19,7 +19,7 @@ export const NavbarContainer = styled.nav`
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: #f4a261;
+  background-color: #e76f51;
   justify-content: space-around;
   align-items: center;
   padding: 0 20px;
@@ -91,7 +91,7 @@ export const previousButton = {
   transform: "translateX(-50%)",
   padding: "0 20px",
   zIndex: "2",
-  backgroundColor: "#e76f51",
+  backgroundColor: "#f4a261",
 };
 
 export const nextButton = {
@@ -104,5 +104,5 @@ export const nextButton = {
   transform: "translateX(50%)",
   padding: "0 20px",
   zIndex: "2",
-  backgroundColor: "#e76f51",
+  backgroundColor: "#f4a261",
 };

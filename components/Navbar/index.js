@@ -1,7 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { NavbarContainer } from "@/styles";
+import { NavbarContainer } from "../../styles";
 
 const Navbar = () => {
   return (
